@@ -26,6 +26,8 @@ yarn run dev
 Successful query
 
 ```json
+$ curl localhost:3000/ebay/orders
+
 EbayAPICallResult {
   timestamp: 2018-04-14T05:33:38.176Z,
   ack: 'Success',

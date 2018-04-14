@@ -1,6 +1,7 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Res } from "@nestjs/common";
 import { EbayService } from "./EbayService";
 import { BaseController } from "../lib/BaseController";
+import { EbayAPICalls } from "./EbayAPICalls";
 
 @Controller('ebay')
 export class EbayController extends BaseController {
@@ -12,10 +13,15 @@ export class EbayController extends BaseController {
     }
 
 
-    @Get('login')
-    public getLogin(): void {
+    @Get('orders')
+    public async getOrders(@Res() response): Promise<void> {
 
-        // this.ebayService.connect();
+        response.send(await this.ebayService.query(EbayAPICalls.SERVICE_TRADING, EbayAPICalls.GET_ORDERS, {
+
+            OrderStatus: 'Active',
+            NumberOfDays: 10
+
+        }));
 
     }
 
