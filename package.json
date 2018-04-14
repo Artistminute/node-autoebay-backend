@@ -1,12 +1,47 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write \"**/*.ts\"",
+        "start": "ts-node -r tsconfig-paths/register src/main.ts",
+        "dev": "env $(cat .env) DEBUG=ebay* nodemon",
+        "dev:debug": "env $(cat .env) nodemon",
+        "prestart:prod": "rm -rf dist && tsc",
+        "start:prod": "node dist/main.js",
+        "test": "jest",
+        "test:cov": "jest --coverage",
+        "test:e2e": "jest --config ./test/jest-e2e.json",
+        "mysql": "mysql -h centos-1 -uroot platform_base",
+        "schema:sync": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:sync"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@nestjs/common": "^4.5.0",
+        "@nestjs/core": "^4.5.0",
+        "@nestjs/testing": "^4.6.6",
+        "@nestjs/typeorm": "^2.0.0",
+        "dotenv": "^5.0.1",
+        "ebay-api": "^1.13.7",
+        "mysql": "^2.14.1",
+        "reflect-metadata": "^0.1.10",
+        "rxjs": "^5.4.3",
+        "typeorm": "^0.2.0-alpha.42"
+    },
+    "devDependencies": {
+        "@types/jest": "^22.2.3",
+        "@types/node": "^9.6.5",
+        "@types/supertest": "^2.0.4",
+        "jest": "^22.4.3",
+        "nodemon": "^1.17.3",
+        "supertest": "^3.0.0",
+        "ts-jest": "^22.4.2",
+        "ts-node": "^5.0.1",
+        "tsconfig-paths": "^3.2.0",
+        "tslint": "^5.9.1",
+        "typescript": "^2.8.1"
+    }
 }

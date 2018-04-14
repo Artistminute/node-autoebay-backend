@@ -1,0 +1,15 @@
+{
+    "name": "default",
+    "type": "mysql",
+    "host": "centos-1",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "autoebay",
+    "entities": [
+        "src/**/**{.ts,.js}",
+        "!src/bin"
+    ],
+    "logging": true,
+    "synchronize": true
+}
